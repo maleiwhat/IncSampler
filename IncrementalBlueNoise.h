@@ -12,126 +12,6 @@
 
 using namespace std;
 
-/*
-1. K - to Blue noise
-   找出最小距离峰值 cluster it. 
-2. Next K
-*/
-
-
-
-
-
-//struct Point : public virtual HandleId
-//{
-//	// Data
-//	union {
-//		struct { real x, y; };
-//		struct { real e[2]; };
-//	};
-//
-//
-//	real & x(){ return x; }
-//	real & y(){ return y; }
-//
-//
-//	// Constructors
-//	Point() {};
-//	Point(real f) { x = y = f; }
-//	Point(real x, real y) { this->x = x; this->y = y; }
-//	Point(const real *f) { x = f[0]; y = f[1]; }
-//
-//	// Operators
-//	real  operator[] (int i) const { return e[i]; }
-//	real& operator[] (int i) { return e[i]; }
-//	const Point& operator+ () const { return *this; }
-//	Point  operator- () const {
-//		Point p(*this); p.x = -p.x; p.y = -p.y; return p;
-//	}
-//	Point& operator= (const Point &p) {
-//		x = p.x; y = p.y; return *this;
-//	}
-//	Point& operator+= (const Point &p) {
-//		*this = *this + p; return *this;
-//	}
-//	Point& operator-= (const Point &p) {
-//		*this = *this - p; return *this;
-//	}
-//	Point& operator*= (real f) { *this = *this * f; return *this; }
-//	Point& operator/= (real f) { *this = *this / f; return *this; }
-//
-//	// Friend operators
-//	friend bool operator== (const Point &p1, const Point &p2) {
-//		if (p1.x != p2.x) return false;
-//		if (p1.y != p2.y) return false;
-//		return true;
-//	}
-//	friend bool operator!= (const Point &p1, const Point &p2) {
-//		return !(p1 == p2);
-//	}
-//	friend Point operator* (real f, const Point &p) {
-//		Point r(p);
-//		r.x *= f;
-//		r.y *= f;
-//		return r;
-//	}
-//	friend Point operator* (const Point &p, real f) {
-//		return f * p;
-//	}
-//	friend Point operator/ (const Point &p, real f) {
-//		real f_ = 1.f / f;
-//		return f_ * p;
-//	}
-//	friend Point operator+ (const Point &p1, const Point &p2) {
-//		Point r;
-//		r.x = p1.x + p2.x;
-//		r.y = p1.y + p2.y;
-//		return r;
-//	}
-//	friend Point operator- (const Point &p1, const Point &p2) {
-//		Point r;
-//		r.x = p1.x - p2.x;
-//		r.y = p1.y - p2.y;
-//		return r;
-//	}
-//	friend std::istream& operator>> (std::istream &is, Point &p) {
-//		for (int i = 0; i < 2; ++i) {
-//			std::string s;
-//			is >> s;
-//			std::replace(s.begin(), s.end(), '(', ' ');
-//			std::replace(s.begin(), s.end(), ')', ' ');
-//			std::stringstream ss;
-//			ss << s;
-//			ss >> p.e[i];
-//		}
-//		return is;
-//	}
-//	friend std::ostream& operator<< (std::ostream &os, const Point &p) {
-//		os << p.x << " " << p.y;
-//		return os;
-//	}
-//
-//	// Functions
-//	inline bool IsInUnitTorus() const {
-//		return (0.f <= x && x < 1.f) && (0.f <= y && y < 1.f);
-//	}
-//	inline void WrapUnitTorus() {
-//		x = (x <  0.f) ? x + 1.f : (x >= 1.f) ? x - 1.f : x;
-//		y = (y <  0.f) ? y + 1.f : (y >= 1.f) ? y - 1.f : y;
-//	}
-//	inline real SquaredDistUnitTorus(const Point &p) const {
-//		real x = fabsf(this->x - p.x);
-//		real y = fabsf(this->y - p.y);
-//		x = (x > .5f) ? 1.f - x : x;
-//		y = (y > .5f) ? 1.f - y : y;
-//		return x*x + y*y;
-//	}
-//	inline real DistUnitTorus(const Point &p) const {
-//		return sqrtf(SquaredDistUnitTorus(p));
-//	}
-//};
-
-
 class Node2d : public virtual HandleId
 {
 private:
@@ -231,13 +111,6 @@ public:
 
 	bool GlobalInsertNode(Node2d * target_node);
 
-	/*
-	   mode : -1 not in the triangle
-	          0  in the trianlge
-			  1  in the leadingedge
-			  2  in the leadingedge->getNext
-			  3  in the leadingedge->getNext->getNext
-	*/
 	bool InTriangle(Edge* edge, Node2d * target_node ,int &mode);
 
 	Edge* splitTriangle(Edge& edge, Node2d& point);
@@ -246,13 +119,6 @@ public:
 
 	void swapTestEdge(Edge * diagonal);
 	
-
-	/*Delaunay Part End!!!*/
-	
-	/**/
-
-
-	/*View Part*/
 
 
 	/*Query Part */
